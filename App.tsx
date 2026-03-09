@@ -62,7 +62,7 @@ export default function App() {
               style={styles.clearButton}
               accessibilityLabel="Clear completed tasks"
             >
-              <Text style={styles.clearButtonText}>Clear done</Text>
+              <Text style={styles.clearButtonText}>Clear completed</Text>
             </TouchableOpacity>
           )}
         </View>

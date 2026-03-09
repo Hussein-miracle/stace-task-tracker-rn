@@ -16,7 +16,7 @@ Scan the QR code with [Expo Go](https://expo.dev/client) on your device, or pres
 - **Add tasks** — input validation prevents empty submissions
 - **Toggle completion** — tap the checkbox or task text to toggle; completed tasks show strikethrough
 - **Delete tasks** — per-task delete button with visual confirmation styling
-- **Filter views** — All / Active / Done filters with live counts
+- **Filter views** — All / Active / Completed filters with live counts
 - **Clear completed** — bulk-remove all finished tasks in one tap
 - **Persistent storage** — tasks survive app restarts via AsyncStorage
 - **Empty states** — contextual messaging per filter (not a generic fallback)
@@ -28,7 +28,7 @@ src/
 ├── components/
 │   ├── TaskInput.tsx    # Controlled input with validation and error state
 │   ├── TaskItem.tsx     # Individual task row with animated toggle
-│   ├── FilterBar.tsx    # All/Active/Done tab selector with counts
+│   ├── FilterBar.tsx    # All/Active/Completed tab selector with counts
 │   └── EmptyState.tsx   # Context-aware empty list messaging
 ├── hooks/
 │   └── useTasks.ts      # All task logic and AsyncStorage persistence
