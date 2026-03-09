@@ -1,4 +1,4 @@
-# TaskTracker
+# Task Tracker
 
 A focused, production-quality task management app built with React Native and Expo.
 
@@ -16,7 +16,7 @@ Scan the QR code with [Expo Go](https://expo.dev/client) on your device, or pres
 - **Add tasks** — input validation prevents empty submissions
 - **Toggle completion** — tap the checkbox or task text to toggle; completed tasks show strikethrough
 - **Delete tasks** — per-task delete button with visual confirmation styling
-- **Filter views** — All / Active / Done filters with live counts
+- **Filter views** — All / Active / Completed filters with live counts
 - **Clear completed** — bulk-remove all finished tasks in one tap
 - **Persistent storage** — tasks survive app restarts via AsyncStorage
 - **Empty states** — contextual messaging per filter (not a generic fallback)
@@ -28,7 +28,7 @@ src/
 ├── components/
 │   ├── TaskInput.tsx    # Controlled input with validation and error state
 │   ├── TaskItem.tsx     # Individual task row with animated toggle
-│   ├── FilterBar.tsx    # All/Active/Done tab selector with counts
+│   ├── FilterBar.tsx    # All/Active/Completed tab selector with counts
 │   └── EmptyState.tsx   # Context-aware empty list messaging
 ├── hooks/
 │   └── useTasks.ts      # All task logic and AsyncStorage persistence
@@ -41,6 +41,9 @@ src/
 ### Key Technical Decisions
 
 **`AsyncStorage` for persistence** — Lightweight, zero-config local storage appropriate for this scope. It integrates naturally with React's `useEffect` pattern: load on mount, save on every mutation. No network, no backend, no complexity overhead.
+
+**dayjs** — Lightweight date formatting (2KB vs moment.js's 67KB). Used to store
+  timestamps as ISO strings and render them in a human-readable format (e.g. "Mar 9, 2:37 PM").
 
 **`FlatList` over `ScrollView`** — Even for a modest task list, `FlatList` is the right default. It virtualizes off-screen rows, which means the list stays performant as data grows. Using `ScrollView` with `.map()` would be simpler but wouldn't demonstrate production awareness.
 
@@ -77,4 +80,4 @@ Given more time, I would prioritize:
 
 6. **Animations** — `react-native-reanimated` for task entry/exit transitions and a spring animation on checkbox toggle. Currently uses a simple `Animated.sequence` scale pulse.
 
-7. **Due dates and sorting** — A date picker on task creation, with sort-by-due-date and overdue highlighting.
+7. **Due dates,relative timestamps and sorting** — A date picker on task creation, with sort-by-due-date and overdue highlighting, relative timestamps ("2 minutes ago") using dayjs's `relativeTime` plugin.

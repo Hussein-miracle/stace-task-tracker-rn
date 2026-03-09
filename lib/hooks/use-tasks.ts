@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { FilterType, Task } from '../types';
+import dayjs from 'dayjs';
 
 
 const STORAGE_KEY = '@tasktracker:tasks';
@@ -47,7 +48,7 @@ export function useTasks() {
         id: uuidv4(),
         text: trimmed,
         completed: false,
-        createdAt: Date.now().toString(),
+        createdAt: dayjs().toISOString(),
       };
 
       const updated = [newTask, ...tasks];
