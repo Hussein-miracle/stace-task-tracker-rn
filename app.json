@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "task-tracker",
+    "name": "TaskTracker",
     "slug": "tasktracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/images/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0F0F11"
     },
@@ -17,14 +17,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#0F0F11",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0F0F11"
       },
       "package": "com.tasktracker.app"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/favicon.png"
     },
     "plugins": [
       [

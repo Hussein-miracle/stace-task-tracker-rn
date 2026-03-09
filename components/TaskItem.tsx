@@ -6,9 +6,9 @@ import {
   StyleSheet,
   Animated,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { FontSize, Radius, Spacing } from '../lib/constants';
+import { FontSize, Radius, Spacing, Colors } from '../lib/constants';
 import { Task } from '../lib/types';
+import dayjs from 'dayjs';
 
 
 interface Props {
@@ -64,12 +64,7 @@ export function TaskItem({ task, onToggle, onDelete }: Props) {
           {task.text}
         </Text>
         <Text style={styles.timestamp}>
-          {new Date(task.createdAt).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
+          {dayjs(task.createdAt).format('MMM D, h:mm A')}
         </Text>
       </TouchableOpacity>
 
@@ -126,7 +121,7 @@ const styles = StyleSheet.create({
   },
   taskText: {
     fontSize: FontSize.md,
-    color: Colors.text,
+    color: Colors.text,  // make sure this is here
     fontWeight: '400',
     lineHeight: 21,
   },
