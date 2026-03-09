@@ -1,4 +1,4 @@
-# TaskTracker
+# Task Tracker
 
 A focused, production-quality task management app built with React Native and Expo.
 
@@ -42,6 +42,9 @@ src/
 
 **`AsyncStorage` for persistence** — Lightweight, zero-config local storage appropriate for this scope. It integrates naturally with React's `useEffect` pattern: load on mount, save on every mutation. No network, no backend, no complexity overhead.
 
+**dayjs** — Lightweight date formatting (2KB vs moment.js's 67KB). Used to store
+  timestamps as ISO strings and render them in a human-readable format (e.g. "Mar 9, 2:37 PM").
+
 **`FlatList` over `ScrollView`** — Even for a modest task list, `FlatList` is the right default. It virtualizes off-screen rows, which means the list stays performant as data grows. Using `ScrollView` with `.map()` would be simpler but wouldn't demonstrate production awareness.
 
 **Custom `useTasks` hook** — All state and side-effects live in one place, making `App.tsx` a thin coordinator. This makes the logic independently testable and keeps components purely presentational.
@@ -77,4 +80,4 @@ Given more time, I would prioritize:
 
 6. **Animations** — `react-native-reanimated` for task entry/exit transitions and a spring animation on checkbox toggle. Currently uses a simple `Animated.sequence` scale pulse.
 
-7. **Due dates and sorting** — A date picker on task creation, with sort-by-due-date and overdue highlighting.
+7. **Due dates,relative timestamps and sorting** — A date picker on task creation, with sort-by-due-date and overdue highlighting, relative timestamps ("2 minutes ago") using dayjs's `relativeTime` plugin.
